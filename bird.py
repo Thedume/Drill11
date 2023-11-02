@@ -10,7 +10,7 @@ import game_framework
 # Boy Run Speed
 # fill here
 PIXEL_PER_METER = (10.0 / 0.3)
-RUN_SPEED_KMPH = 20.0
+RUN_SPEED_KMPH = 45.0
 RUN_SPEED_MPH = (RUN_SPEED_KMPH * 1000.0 / 60.0)
 RUN_SPEED_MPS = (RUN_SPEED_MPH / 60.0)
 RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
@@ -44,6 +44,8 @@ class Bird:
         elif self.x <= 50:
             self.dir = 1
 
-
     def draw(self):
-        self.image.clip_draw(int(self.frame) * 183, self.action * 168, 183, 168, self.x, self.y)
+        if self.dir == 1:
+            self.image.clip_composite_draw(int(self.frame) % 5 * 183, 338 - (int(self.frame) // 5 * 168), 183, 168, 0, '', self.x, self.y, 80, 60)
+        elif self.dir == -1:
+            self.image.clip_composite_draw(int(self.frame) % 5 * 183, 338 - (int(self.frame) // 5 * 168), 183, 168, 0, 'h', self.x, self.y, 80, 60)
