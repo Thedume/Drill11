@@ -168,9 +168,6 @@ class StateMachine:
         self.cur_state.draw(self.boy)
 
 
-
-
-
 class Boy:
     def __init__(self):
         self.x, self.y = 400, 90
